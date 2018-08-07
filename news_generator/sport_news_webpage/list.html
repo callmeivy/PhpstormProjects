@@ -1,0 +1,54 @@
+<!-- 前端文件-->
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1" />
+    <title>php+mySQL+Ajax实例</title>
+</head>
+<body>
+<style>
+    body{margin:0px;padding:0px;font-family:'微软雅黑';font-size:16px;color:#333;}
+    ul,li{margin:0px;padding:0px; list-style:none; font-style:normal;}
+    a{ text-decoration:none;color:inherit}
+    .main{width:90%;margin:0 auto;}
+    .more{color:#999;font-size:14px;float:right}
+    .news-tit{font-weight:bold;line-height:27px;padding-top:10px;}
+    #list li{line-height:27px;font-size:15px;border-bottom:1px solid #eee;padding:10px 0px;}
+    .widget-list-link:hover{ color:#F90}
+    .more-mark{float:right}
+</style>
+<div class="main">
+    <div><span class="news-tit">新闻动态</span><span class="more">更多</span></div>
+    <div class="list-wrap">
+        <ul id="list"><!--获取的数据列表展示在这里--></ul>
+    </div>
+</div>
+<script src="./jquery-3.3.1.min.js"></script>
+<script>
+    $(function(){
+        // var id =14;//设置所调取的栏目id
+        $.ajax({
+            url:'./phptoAjax.php',//连接获取数据的php接口文件
+            dataType:'json',//接收格式
+            type:'POST',    //传递方法
+            // window.alert(5 + 6);
+            // data:{id:id},//获取ID数据
+            success:function(msg){ //成功之后执行
+                var id=$(this).val();
+                var ul = "";
+                // for(var i= 0;i<4;i++){ //这里我限制的四个，不限制的话可以这样写i<msg.length;
+                //     ul += "<li class='list'><a href='php/phpArticle.php?art="+msg[i]['id']+" 'class='widget-list-link'>" + msg[i]['title']+"<i class='more-mark'>"+">>"+"</i></a></li>";
+                // }
+                $("#list").html(ul);
+
+            },
+            error:function(){   //失败执行
+                console.log("链接错误") ;
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>

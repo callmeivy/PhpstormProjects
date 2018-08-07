@@ -1,0 +1,82 @@
+<!--https://blog.csdn.net/Iris_Shaw/article/details/79965264-->
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>ajax实例</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="height: 5000px;">
+<div class="container">
+    <div class="panel panel-default" style="margin-top: 100px;text-align: center;">
+        <div class="panel-heading">
+            Ajax实例
+        </div>
+        <div class="panel-body">
+            <form class="navbar-form navbar-center" role="search" name="myform">
+                <div class="form-group">
+                    <label>
+                        年龄:<input type="number" class="form-control" placeholder="Age" name="userage" id='userage'/>
+                    </label>
+                </div>
+                <select class="form-control" id="usersex" name="usersex">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+                <button type="button" class="btn btn-default" onclick='ajaxFunction()'>提交</button>
+            </form>
+
+            <table class="table table-condensed table-bordered" id="ajaxDiv"></table>
+            <p>SQL语句：<pre id="sql"></pre></p>
+        </div>
+    </div>
+</div>
+
+
+<script src="./jquery-3.3.1.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    function ajaxFunction()
+    {
+        var xmlHttp;
+        try{
+            xmlHttp = new XMLHttpRequest();
+        }catch(e){
+            //IE浏览器需要用ActiveXObject来创建 XMLHttpRequest对象
+            try{
+                //如果Javascript的版本大于5
+                xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+            }catch(e){
+                try{
+                    //如果不是 则使用老版本的ActiveX对象
+                    xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }catch(e){
+                    alert("您的浏览器不支持");
+                    return false;
+                }
+            }
+        }
+        xmlHttp.onreadystatechange=function(){
+            if(xmlHttp.readyState==4){
+                // Header('Content-Type: application/json;charset=utf8');
+                alert("I am an alert box!!");
+                // document.getElementById是指本html文件上面部分的各个id
+                // var ajaxData=document.getElementById("ajaxDiv");
+                var sqlData=document.getElementById('sql');
+                alert(xmlHttp.responseText);
+                var jsonData=JSON.parse(xmlHttp.responseText);//解析json数据
+                // System.out.println(ajaxData);
+                // ajaxData.innerHTML=jsonData.data;
+                sqlData.innerHTML=jsonData.sql;
+            }
+        }
+        var userage=document.getElementById('userage').value;
+        var usersex=document.getElementById('usersex').value;
+        var url='?userage='+userage;
+        alert (url);
+        url += '&usersex='+usersex;
+        xmlHttp.open("GET","ajaxtest.php"+url,true);
+        xmlHttp.send();
+    }
+</script>
+</body>
+</html>>
