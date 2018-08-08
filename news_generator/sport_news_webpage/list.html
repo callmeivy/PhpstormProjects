@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1" />
-    <title>php+mySQL+Ajax实例</title>
+    <title>机器写作</title>
 </head>
 <body>
 <style>
@@ -32,18 +32,13 @@
             // dataType:'json',//接收格式
             // type:'POST',    //传递方法
             type:'GET',    //传递方法
-            beforeSend:function(xhr){
-                console.log(xhr)
-                console.log('发送前')
-            },
             success:function(data){ //成功之后执行
-                console.log("okok");
                 var ul = "";
                 result=JSON.parse(data);
                 // data样式：
                 // [{"title":"\u6211\u662f\u6807\u9898","pubdate":"2018-08-08 15:11:00","litpic":"no"},{"title":"\u7b2c\
                 // u4e8c\u6761\u6807\u9898","pubdate":"2018-08-08 15:49:29","litpic":"yes"}]
-                alert(result[0]['title']);
+                // alert(result[0]['title']);
                 for(var i= 0;i<4;i++){ //限制的四条
                     ul += "<li class='list'><a href='phpArticle.php?art="+result[i]['id']+" 'class='widget-list-link'>" + result[i]['title']+"<i class='more-mark'>"+">>"+"</i></a></li>";
                 }
