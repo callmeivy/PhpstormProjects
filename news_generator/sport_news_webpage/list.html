@@ -44,7 +44,7 @@
                 // [{"title":"\u6211\u662f\u6807\u9898","pubdate":"2018-08-08 15:11:00","litpic":"no"},{"title":"\u7b2c\
                 // u4e8c\u6761\u6807\u9898","pubdate":"2018-08-08 15:49:29","litpic":"yes"}]
                 alert(result[0]['title']);
-                for(var i= 0;i<4;i++){ //这里我限制的四个，不限制的话可以这样写i<msg.length;
+                for(var i= 0;i<4;i++){ //限制的四条
                     ul += "<li class='list'><a href='phpArticle.php?art="+result[i]['id']+" 'class='widget-list-link'>" + result[i]['title']+"<i class='more-mark'>"+">>"+"</i></a></li>";
                 }
                 $("#list").html(ul);
