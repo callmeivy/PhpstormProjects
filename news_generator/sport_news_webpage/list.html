@@ -26,24 +26,37 @@
 <script src="./jquery-3.3.1.min.js"></script>
 <script>
     $(function(){
-        // var id =14;//设置所调取的栏目id
+        // var User ='root';//设置所调取的栏目id
         $.ajax({
-            url:'./phptoAjax.php',//连接获取数据的php接口文件
-            dataType:'json',//接收格式
-            type:'POST',    //传递方法
-            // window.alert(5 + 6);
-            // data:{id:id},//获取ID数据
-            success:function(msg){ //成功之后执行
-                var id=$(this).val();
+            url:'phptoAjax.php',//连接获取数据的php接口文件
+            // dataType:'json',//接收格式
+            // type:'POST',    //传递方法
+            type:'GET',    //传递方法
+            beforeSend:function(xhr){
+                console.log(xhr)
+                console.log('发送前')
+            },
+            success:function(data){ //成功之后执行
+                console.log("okok");
                 var ul = "";
-                // for(var i= 0;i<4;i++){ //这里我限制的四个，不限制的话可以这样写i<msg.length;
-                //     ul += "<li class='list'><a href='php/phpArticle.php?art="+msg[i]['id']+" 'class='widget-list-link'>" + msg[i]['title']+"<i class='more-mark'>"+">>"+"</i></a></li>";
-                // }
+                result=JSON.parse(data);
+                // data样式：
+                // [{"title":"\u6211\u662f\u6807\u9898","pubdate":"2018-08-08 15:11:00","litpic":"no"},{"title":"\u7b2c\
+                // u4e8c\u6761\u6807\u9898","pubdate":"2018-08-08 15:49:29","litpic":"yes"}]
+                alert(result[0]['title']);
+                for(var i= 0;i<4;i++){ //这里我限制的四个，不限制的话可以这样写i<msg.length;
+                    ul += "<li class='list'><a href='phpArticle.php?art="+result[i]['id']+" 'class='widget-list-link'>" + result[i]['title']+"<i class='more-mark'>"+">>"+"</i></a></li>";
+                }
                 $("#list").html(ul);
 
             },
-            error:function(){   //失败执行
+            error:function(data,type, err){   //失败执行
                 console.log("链接错误") ;
+
+                alert(data);
+                alert(data.error_code);
+                console.log("ajax错误类型："+type);
+                console.log(err);
             }
         });
     });
