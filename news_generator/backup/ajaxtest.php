@@ -1,7 +1,7 @@
 <?php
 //header('Content-Type: application/json;charset=utf8');
 //header('Content-type: application/json');
-error_reporting(0);  //禁用保错信息
+error_reporting(0);  //禁用报错信息
 $dbhost="localhost";
 //    $dbhost="192.168.168.105";
 $dbuser="root";
