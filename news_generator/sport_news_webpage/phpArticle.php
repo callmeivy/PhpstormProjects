@@ -34,8 +34,8 @@ $sql_later = "select * from tdt_archives where id>$id order by id limit 1"; //�
 $queryset_former = $mysqli->query($sql_former); //执行sql语句
 while($result = mysqli_fetch_object($queryset_former)){
 if(!empty($result)){
-    echo $result->title;
-    echo $result->id;
+//    echo $result->title;
+//    echo $result->id;
     echo "<p class='pagelist'>上一篇: <a href='phpArticle.php?art=$result->id'> ".$result->title." </a></p>";
 }
 else {
