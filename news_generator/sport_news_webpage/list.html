@@ -24,6 +24,63 @@
         <ul id="list"><!--获取的数据列表展示在这里--></ul>
     </div>
 </div>
+
+<!--<div id="wrapper">-->
+    <!--<div riot-tag="yheader"></div>-->
+    <!--<div class="left">-->
+        <!--<div riot-tag="tab"></div>-->
+        <!--<div riot-tag="feedBox"></div>-->
+    <!--</div>-->
+    <!--<div class="right">-->
+        <!--<div riot-tag="statistics"></div>-->
+        <!--<div riot-tag="recent"></div>-->
+    <!--</div>-->
+    <!--<div riot-tag="top"></div>-->
+<!--</div>-->
+<!--<div class="footer-push"></div>-->
+<!--<div riot-tag="ugcBox"></div>-->
+
+
+<!--</div>-->
+
+<!--<script>-->
+    <!--window.globals = window.globals || {};-->
+
+    <!--window.taAnalysis && taAnalysis.setup({-->
+        <!--c: 'user_page'-->
+    <!--});-->
+    <!--window.taAnalysis && taAnalysis.send('pageview', {});-->
+
+    <!--utils.on(document.getElementsByTagName('body')[0], 'click', function(e) {-->
+        <!--var target = utils.getTarget(e),-->
+            <!--ga_event,-->
+            <!--ga_category,-->
+            <!--ga_label,-->
+            <!--ga_value;-->
+
+        <!--while(target && target.nodeName.toUpperCase() !== 'BODY') {-->
+            <!--ga_event = utils.getAttribute(target, 'ga_event');-->
+            <!--ga_category = utils.getAttribute(target, 'ga_category') || 'user_page';-->
+            <!--ga_label = utils.getAttribute(target, 'ga_label');-->
+            <!--ga_value = utils.getAttribute(target, 'ga_value') || 1;-->
+
+            <!--ga_event && window._czc && _czc.push(["_trackEvent", ga_category, ga_event, ga_label, ga_value]);-->
+            <!--ga_event && taAnalysis && taAnalysis.send('event', { ev: ga_event });-->
+            <!--target = target.parentNode;-->
+        <!--}-->
+    <!--});-->
+
+    <!--riot.observable(window);-->
+
+<!--// </script>-->
+
+<script src='./switch.js'></script>
+<script>
+    var PAGE_SWITCH = window['toutiao.web.toutiao_pc/pc/fe_switch'] || {};
+</script>
+
+
+
 <script src="./jquery-3.3.1.min.js"></script>
 <script>
     $(function(){
@@ -59,5 +116,24 @@
 
 </script>
 
+
+<!-- 公共尾部 -->
+<div id="footer">
+    <div>
+        <span class="fitem">© 2018 中视广信 </span>
+        <!--<a class="fitem" href="http://www.12377.cn/" target="_blank">中国互联网举报中心</a>-->
+        <!--<a class="fitem" href="http://www.miibeian.gov.cn/" target="_blank">京ICP证140141号</a>-->
+        <!--<a class="fitem" href="http://www.miibeian.gov.cn/" target="_blank">京ICP备12025439号-3</a>-->
+        <!--<a class="fitem" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11000002002023" target="_blank" ga_event="click_about">-->
+        <!--<img src="//s3.pstatp.com/toutiao/resource/ntoutiao_web/static/image/gongan_d0289dc.png">京公网安备 11000002002023号-->
+        <!--</a>-->
+    </div>
+    <div>
+        <!--<a class="fitem" href="/license/" class="icp" target="_blank">网络文化经营许可证</a>-->
+        <!--<a class="fitem" href="/a3642705768/" target="_blank">跟帖评论自律管理承诺书</a>-->
+        <span class="fitem">违法和不良信息举报电话：010-68068888</span>
+        <span class="fitem">公司名称：北京中视广信科技有限公司</span>
+    </div>
+</div>
 </body>
 </html>
