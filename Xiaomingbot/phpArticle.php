@@ -1,7 +1,7 @@
 <?php
 require_once("conn.php");
-$id = $_GET['art'];   //接收前端上传的数据，此处为文章的id值
-//$id = 1;   //接收前端上传的数据，此处为文章的id值
+//$id = $_GET['art'];   //接收前端上传的数据，此处为文章的id值
+$id = 6;   //接收前端上传的数据，此处为文章的id值
 $query="select  tdt_archives.title,tdt_archives.pubdate,tdt_archives.litpic,tdt_addonarticle.body from tdt_archives,
 tdt_addonarticle where tdt_archives.id ='$id' and tdt_addonarticle.aid='$id'";
 $qry_result=$mysqli->query($query);
